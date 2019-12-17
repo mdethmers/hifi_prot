@@ -14,9 +14,18 @@ class loginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('asssistant'),
+        title: Text('asssistant', style: TextStyle(color: Colors.black),),
+        backgroundColor: Colors.limeAccent,
+        
       ),
       body: Container(
+        child: FloatingActionButton(
+         child: Text('button'),
+          onPressed: (){
+
+      },
+        ),
+        padding: EdgeInsets.all(10),
         decoration: BoxDecoration(image: _buildBackgroundImage()),
       ) ,
     );
