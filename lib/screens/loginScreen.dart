@@ -13,6 +13,55 @@ class loginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Menu'),
+              decoration: BoxDecoration(
+                color: Colors.blue,
+              ),
+            ),
+            ListTile(
+              title: Text('Booking'),
+              onTap: () {
+                //update the state of app
+                //...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Timetable'),
+              onTap: () {
+                //update the state of app
+                //...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Events'),
+              onTap: () {
+                //update the state of app
+                //...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Settings'),
+              onTap: () {
+                //update the state of app
+                //...
+                // Then close the drawer
+                Navigator.pop(context);
+              },
+            )
+          ],
+        )
+      ),
       appBar: AppBar(
         title: Text('asssistant', style: TextStyle(color: Colors.black),),
         backgroundColor: Colors.limeAccent,
