@@ -1,23 +1,52 @@
 import 'package:flutter/material.dart';
+import 'package:hifi_prot/screens/loginScreen2.dart';
 
 class loginScreen extends StatelessWidget {
 
-  DecorationImage _buildBackgroundImage() {
+
+  DecorationImage _buildBackgroundImage() { //background image for login screeen
     return DecorationImage(
+
         fit: BoxFit.cover,
         colorFilter:
         ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.dstATop),
-        image: NetworkImage('https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwjmjcDi6rzmAhXP0qQKHROYD4IQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.utwente.nl%2Fen%2Fcampus%2Fbuildings-rules%2F&psig=AOvVaw04isX43L9vDEVywtqH4fLL&ust=1576677275342892'));
+        image: AssetImage('assets/background.jpg'));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('asssistant'),
-      ),
+
       body: Container(
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(image: _buildBackgroundImage()),
+        child: Container(child: Column(
+          children: <Widget>[
+            SizedBox(height: MediaQuery.of(context).size.height*0.85,),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height*0.15,
+              padding: EdgeInsets.symmetric(horizontal: 100, vertical: 20),
+              color: Colors.white,
+              child:
+                  Container(
+                    decoration: BoxDecoration(border: Border.all(width: 2)),
+                    child: RaisedButton(
+
+                      color: Colors.white,
+                      child: Text('LOGIN'),
+                      onPressed: (){
+                        Navigator.pushNamed(context, LoginScreen2.routeName);
+                      },
+
+
+                    ),
+                  )
+
+            ),
+          ],
+        ),
+        ),
       ) ,
     );
   }
