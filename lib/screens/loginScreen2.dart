@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hifi_prot/screens/homeScreen.dart';
 
 
 class LoginScreen2 extends StatelessWidget {
@@ -84,7 +85,7 @@ class LoginScreen2 extends StatelessWidget {
                 child: Text('LOGIN'),
                 onPressed: () {
                   //navigate to homescreen
-
+                    Navigator.pushNamed(context, homeScreen.routeName);
                 }),
 
               ],
