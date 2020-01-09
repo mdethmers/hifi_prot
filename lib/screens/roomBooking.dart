@@ -71,7 +71,7 @@ class _RoomBooking extends State<RoomBooking> {
                 ),
 
                 SizedBox(
-                  width: 30,
+                  width: 20,
                 ),
 
                 Container(
@@ -102,7 +102,7 @@ class _RoomBooking extends State<RoomBooking> {
                 ),
 
                 SizedBox(
-                  width: 30,
+                  width: 20,
                 ),
 
                 FlatButton(
@@ -110,7 +110,7 @@ class _RoomBooking extends State<RoomBooking> {
                   child: Text('Search',style: TextStyle(color: Colors.white),),
                   onPressed: (){
                     setState(() {
-                      _items = productsProvider.getLocationTime(_building, _time);
+                      _items = productsProvider.getLocationTime(context, _building, _time);
                     });
 
                   },

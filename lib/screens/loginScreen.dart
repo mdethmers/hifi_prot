@@ -36,7 +36,7 @@ class loginScreen extends StatelessWidget {
                       color: Colors.white,
                       child: Text('LOGIN'),
                       onPressed: (){
-                        Navigator.pushNamed(context, LoginScreen2.routeName);
+                        Navigator.pushReplacementNamed(context, LoginScreen2.routeName);
                       },
 
 

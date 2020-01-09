@@ -2,10 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:hifi_prot/screens/homeScreen.dart';
 
 
-class LoginScreen2 extends StatelessWidget {
+class LoginScreen2 extends StatefulWidget {
 
   static const String routeName = '/loginScreen2';
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _LoginScreen2();
+  }
+}
+
+class _LoginScreen2 extends State<LoginScreen2> {
+
+
+
   final TextEditingController _passwordController = TextEditingController();
+   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final Map<String, dynamic> _loginData = {
+    'email': null,
+  };
 
 
   DecorationImage _buildBackgroundImage() { //background image for login screeen
@@ -20,19 +35,16 @@ class LoginScreen2 extends StatelessWidget {
   Widget _buildEmailTextField() {
     return TextFormField(
       decoration: InputDecoration(
-          labelText: 'Email', filled: true, fillColor: Colors.white),
+          labelText: 'Student Number', filled: true, fillColor: Colors.white),
       keyboardType: TextInputType.emailAddress,
       maxLines: 1,
       validator: (String value) {
-        if (value.isEmpty ||
-            !RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
-
-                .hasMatch(value)) {
-          return 'email should not be empty and valid';
+        if (value.isEmpty && value.substring(0,1) != 's') {
+          return 'Student Number should not be empty and valid';
         }
       },
       onSaved: (String value) {
-
+        _loginData['email'] = value;
       },
     );
   }
@@ -53,9 +65,7 @@ class LoginScreen2 extends StatelessWidget {
           return 'password should not be empty and valid';
         }
       },
-      onSaved: (String value) {
 
-      },
     );
   }
 
@@ -64,36 +74,40 @@ class LoginScreen2 extends StatelessWidget {
 
     return Scaffold(
 
-      body: Container(
-        padding: EdgeInsets.all(20),
-        decoration: BoxDecoration(image: _buildBackgroundImage(),),
-        alignment: Alignment.center,
-        child: Center(
-          child: SingleChildScrollView(
-            child:  Column(
+      body: Form(
+        key: _formKey,
+        child: Container(
+          padding: EdgeInsets.all(20),
+          decoration: BoxDecoration(image: _buildBackgroundImage(),),
+          alignment: Alignment.center,
+          child: Center(
+            child: SingleChildScrollView(
+              child:  Column(
 
-              children: <Widget>[
+                children: <Widget>[
 
-                _buildEmailTextField(),
-                SizedBox(height: 10,),
-                _buildPasswordTextField(),
-                SizedBox(height: 10,),
+                  _buildEmailTextField(),
+                  SizedBox(height: 10,),
+                  _buildPasswordTextField(),
+                  SizedBox(height: 10,),
 
-                RaisedButton(
-                color: Colors.white,
-                textColor: Colors.black,
-                child: Text('LOGIN'),
-                onPressed: () {
-                  //navigate to homescreen
-                    Navigator.pushNamed(context, homeScreen.routeName);
-                }),
+                  RaisedButton(
+                      color: Colors.white,
+                      textColor: Colors.black,
+                      child: Text('LOGIN'),
+                      onPressed: () {
+                        if(_formKey.currentState.validate()) {
+                          Navigator.pushReplacementNamed(context, homeScreen.routeName);
+                        }
+                      }),
 
-              ],
+                ],
+              ),
             ),
-          ),
-        )
+          )
 
-      ),
+      )
+        ,)
     );
   }
 

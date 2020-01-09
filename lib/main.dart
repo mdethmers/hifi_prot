@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider.value(value: classProvider())
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'canvas assistant',
         home: loginScreen(),
         routes: {
